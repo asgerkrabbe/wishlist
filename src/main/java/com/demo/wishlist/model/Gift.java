@@ -14,4 +14,6 @@ public class Gift {
         this.price = price;
         this.url = url;
     }
+
+
 }
