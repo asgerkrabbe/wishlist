@@ -10,6 +10,7 @@ public class User {
     private int userId;
     private ArrayList<WishList> wishLists;
 
+    public User(){};
 
     public User(String email, String userName, String password, int userId) {
         this.email = email;
