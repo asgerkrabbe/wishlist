@@ -2,11 +2,26 @@ package com.demo.wishlist.model;
 
 public class UserHandler {
 
+    //UsersRepo usersRepository;
     // This class should have the logic code in the
 
 
-//    public User login(String email, String password) throws LoginSampleException {
-//
+   public static User login(String email, String password) {
+       return new User();
+       //if
+       //UsersRepo.login(email, password);
+   }
+
+    public static User createUser(String userName, String email, String pass1, String pass2) {
+        return new User();
+        // if passwords match, email is valid and username is not empty....
+        //UsersRepo.createUser(userName, email, pass1, pass2);
+    }
+
+   }
+
+
+   //
 //
 //        return facade.login(email, password);
 //    }
@@ -18,4 +33,4 @@ public class UserHandler {
 //        return user;
 //    }
 
-}
+
