@@ -25,4 +25,19 @@ public class User {
         this.userId = userId;
         this.wishLists = wishLists;
     }
+    public void addWishList(WishList wl){
+        wishLists.add(wl);
+    }
+
+    public String getUserName(){
+        return userName;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public ArrayList<WishList> getWishLists() {
+        return wishLists;
+    }
 }

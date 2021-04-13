@@ -10,6 +10,14 @@ public class WishList {
     private int wishList_id;
 
 
+    public WishList(){
+        wishList = new ArrayList<Gift>();
+    }
+    public void addGift(Gift gift){
+        wishList.add(gift);
+    }
+
+
     public WishList(ArrayList<Gift> wishList, String name, int user_id, int wishList_id) {
         if (wishList == null)
             wishList = new ArrayList<>();
@@ -17,5 +25,9 @@ public class WishList {
         this.name = name;
         this.user_id = user_id;
         this.wishList_id = wishList_id;
+    }
+
+    public String getName() {
+        return name;
     }
 }
