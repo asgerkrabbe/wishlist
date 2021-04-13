@@ -1,10 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+
+    <title>Wish List</title>
 </head>
 <body>
+<h1>
+Velkommen til Wish List !
+</h1>
+
+
+    <h4> Log ind for at se dine ønsker</h4>
+
+            <form name="login" action="/login" method="POST">
+                Email:<br>
+                <input type="text" name="email">
+                <br>
+                Password:<br>
+                <input type="password" name="password">
+                <br>
+                <br>
+                <input type="submit" value="log ind">
+            </form>
+
+        <h4>Opret bruger</h4>
+
+            <form name="register" action="/register" method="POST">
+                Email:<br>
+                <input type="text" name="email">
+                <br>
+                Password:<br>
+                <input type="password" name="password1">
+                <br>
+                Retype Password:<br>
+                <input type="password" name="password2">
+                <br>
+                <br>
+                <input type="submit" value="Opret bruger">
+            </form>
 
 </body>
 </html>
