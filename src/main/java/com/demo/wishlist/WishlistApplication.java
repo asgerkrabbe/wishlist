@@ -15,9 +15,9 @@ public class WishlistApplication {
 
         UserMapper userMapper = new UserMapper();
 
-       // User user1 = new User("qwe@mail.com","qwe","1234",10);
+       User user1 = new User("qwe@mail.com","qwe","1234",10);
 
-       // userMapper.createUser(user1);*/
+       userMapper.createUser(user1);
 
         userMapper.login("mail@mail.com", "1234");
 
