@@ -1,11 +1,9 @@
 package com.demo.wishlist.model;
 
+// This class should have the functions and logic code that involve the user data.
 public class UserHandler {
 
     //UsersRepo usersRepository;
-    // This class should have the logic code in the
-
-
    public static User login(String email, String password) {
        return new User();
        //if
@@ -13,9 +11,12 @@ public class UserHandler {
    }
 
     public static User createUser(String userName, String email, String pass1, String pass2) {
-        return new User();
         // if passwords match, email is valid and username is not empty....
+        // forward the user data to the database and get user_Id, then
+        //create a new user object and return it to the UI controller
         //UsersRepo.createUser(userName, email, pass1, pass2);
+        //then return user
+        return new User();
     }
 
    }

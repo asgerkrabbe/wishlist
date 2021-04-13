@@ -8,12 +8,26 @@ public class Gift {
     private String url;
 
 
-    public Gift(String giftName, String description, double price, String url) {
+    public Gift(String giftName, double price, String url) {
         this.giftName = giftName;
-        this.description = description;
         this.price = price;
         this.url = url;
     }
 
 
+    public String getGiftName() {
+        return giftName;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public String getUrl() {
+        return url;
+    }
 }
