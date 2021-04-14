@@ -16,7 +16,6 @@ public class DBManager {
     private static Connection connection = null;
 
     public static Connection getConnection() {
-
         if (connection != null) return connection;
         try (InputStream input = new FileInputStream("src/main/resources/application.properties")) {
             Properties properties = new Properties();
@@ -24,7 +23,6 @@ public class DBManager {
             url = properties.getProperty("url");
             user = properties.getProperty("user");
             password = properties.getProperty("password");
-
         } catch (IOException ex) {
             ex.printStackTrace();
         }
