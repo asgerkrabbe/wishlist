@@ -1,15 +1,17 @@
 package com.demo.wishlist.view;
-
+import java.util.ArrayList;
 import com.demo.wishlist.model.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.context.request.WebRequest;
-
+import com.demo.wishlist.data.LoginSampleException;
 import java.util.List;
 
 @Controller
 public class FrontController {
+
+    UserHandler userHandler = new UserHandler();
 
     //method for testing purposes
     private User getTestUser() {
@@ -21,7 +23,6 @@ public class FrontController {
         wl.add(gift2);
         testUser.addWishList(wl);
         return testUser;
-
     }
 
     @GetMapping("/")
@@ -34,19 +35,19 @@ public class FrontController {
         String email = request.getParameter("email");
         String pwd = request.getParameter("password");
         // delegate work + data to login controller
-        User user = UserHandler.login(email, pwd);
+        User user = userHandler.login(email, pwd);
         request.setAttribute("user", getTestUser(), WebRequest.SCOPE_SESSION);
         // Go to to personal page
         return "/userpage";
     }
 
     @PostMapping("/register")
-    public String createUser(WebRequest request) {
+    public String createUser(WebRequest request) throws LoginSampleException {
         String userName = request.getParameter("username");
         String email = request.getParameter("email");
         String pass1 = request.getParameter("password1");
         String pass2 = request.getParameter("password2");
-        User user = UserHandler.createUser(userName, email, pass1, pass2);
+        User user = userHandler.createUser(userName, email, pass1, pass2);
         request.setAttribute("user", user, WebRequest.SCOPE_SESSION);
         return "/userpage";
         //return "redirect:/success";

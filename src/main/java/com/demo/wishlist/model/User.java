@@ -8,30 +8,29 @@ public class User {
     private String userName;
     private String password;
     private int userId;
-    private ArrayList<WishList> wishLists;
+    private ArrayList<Gift> myList;
 
-    public User() {
-    }
+    public User() { }
 
-    ;
-
-    public User(String email, String userName, String password, int userId) {
+    public User(String email, String userName, String password) {
         this.email = email;
         this.userName = userName;
-        this.userId = userId;
         this.password = password;
-        this.wishLists = new ArrayList<>();
+        myList = new ArrayList<Gift>();
     }
 
-    public User(String email, String userName, String password, int userId, ArrayList<WishList> wishLists) {
+    public User(String email, String userName, String password, int userId, ArrayList<Gift> wishList) {
         this.email = email;
         this.userName = userName;
         this.userId = userId;
-        this.wishLists = wishLists;
     }
 
-    public void addWishList(WishList wl) {
-        wishLists.add(wl);
+    public ArrayList<Gift> geMyList(){
+        return myList;
+    }
+
+    public void addWishList(ArrayList<Gift> wl){
+        this.myList = wl;
     }
 
     public String getEmail() {
@@ -48,22 +47,6 @@ public class User {
 
     public int getUserId() {
         return userId;
-    }
-
-    public ArrayList<WishList> getWishLists() {
-        return wishLists;
-    }
-
-    public void setEmail (String email){
-        this.email = email;
-    }
-
-    public void setUserName (String userName){
-        this.userName = userName;
-    }
-
-    public void setPassword (String password){
-        this.password = password;
     }
 
     public void setUserId ( int userId){

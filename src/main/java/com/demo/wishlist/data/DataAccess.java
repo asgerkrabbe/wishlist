@@ -1,5 +1,7 @@
 package com.demo.wishlist.data;
 
+import com.demo.wishlist.model.*;
+
 import java.sql.*;
 
 public class DataAccess {

@@ -6,6 +6,7 @@ public class Gift {
     private String description;
     private double price;
     private String url;
+    private int userId;
 
 
     public Gift(String giftName, double price, String url, String description) {
@@ -13,6 +14,10 @@ public class Gift {
         this.price = price;
         this.url = url;
         this.description = description;
+    }
+
+    public void setUserId(int id){
+        this.userId = id;
     }
 
 

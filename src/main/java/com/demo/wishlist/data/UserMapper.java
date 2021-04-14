@@ -13,7 +13,7 @@ public class UserMapper {
      * @throws LoginSampleException
      */
 
-    public void createUser(User user) throws LoginSampleException {
+    public User createUser(User user) throws LoginSampleException {
         try {
             Connection con = DBManager.getConnection();
             String SQL = "INSERT INTO user_data (user_password, email, username) VALUES (?, ?, ?)";
@@ -26,6 +26,7 @@ public class UserMapper {
             ids.next();
             int id = ids.getInt(1);
             user.setUserId(id);
+            return user;
         } catch (SQLException ex) {
             throw new LoginSampleException(ex.getMessage());
         }
@@ -53,7 +54,7 @@ public class UserMapper {
             if (rs.next()) {
                 String username = rs.getString("username");
                 int id = rs.getInt("id");
-                User user = new User(email, username, password, id);
+                User user = new User(email, username, password);
                 user.setUserId(id);
                 return user;
             } else {

@@ -8,9 +8,9 @@ import java.util.ArrayList;
 
 public class WishListHandler {
 
-    public static ArrayList<WishList> getWishLists(int userId){
+    public static ArrayList<Gift> getList(int userId){
         //This should forward the user ID to the database and retrieve the users lists.
-        return new ArrayList<WishList>();
+        return new ArrayList<Gift>();
     }
 
 
