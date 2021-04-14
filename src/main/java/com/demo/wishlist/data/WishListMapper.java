@@ -29,7 +29,6 @@ public class WishListMapper {
                 gift.setUserId(user_id);
                 list.add(gift);
             }
-            System.out.println(list);
             return list;
         }
         catch (SQLException ex) {

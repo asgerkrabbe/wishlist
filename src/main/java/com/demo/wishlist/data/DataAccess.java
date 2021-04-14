@@ -2,7 +2,7 @@ package com.demo.wishlist.data;
 
 import com.demo.wishlist.model.*;
 
-import java.sql.*;
+import java.util.ArrayList;
 
 public class DataAccess {
     UserMapper userMapper = new UserMapper();
@@ -16,5 +16,7 @@ public class DataAccess {
         return userMapper.createUser(user);
     }
 
-
+    public ArrayList<Gift> getList(int userId) throws LoginSampleException {
+        return listMapper.getList(userId);
+    }
 }

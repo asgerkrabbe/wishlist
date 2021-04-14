@@ -12,6 +12,7 @@ import java.util.List;
 public class FrontController {
 
     UserHandler userHandler = new UserHandler();
+    WishListHandler wishListHandler = new WishListHandler();
 
     //method for testing purposes
     private User getTestUser() {
@@ -31,12 +32,12 @@ public class FrontController {
     }
 
     @PostMapping("/login")
-    public String login(WebRequest request) {
+    public String login(WebRequest request) throws LoginSampleException {
         String email = request.getParameter("email");
         String pwd = request.getParameter("password");
         // delegate work + data to login controller
         User user = userHandler.login(email, pwd);
-        request.setAttribute("user", getTestUser(), WebRequest.SCOPE_SESSION);
+        request.setAttribute("user", user, WebRequest.SCOPE_SESSION);
         // Go to to personal page
         return "/userpage";
     }
@@ -55,10 +56,11 @@ public class FrontController {
 
 
     @GetMapping("/userpage")
-    public String userPage(WebRequest request) {
+    public String userPage(WebRequest request) throws LoginSampleException {
         User user = (User) request.getAttribute("user", WebRequest.SCOPE_SESSION);
-        List<Gift> wishList = WishListHandler.getList(user.getUserId());
-        request.setAttribute("list", getTestUser().geMyList(), WebRequest.SCOPE_SESSION);
+        List<Gift> wishList = wishListHandler.getList(user.getUserId());
+        request.setAttribute("list", wishList, WebRequest.SCOPE_SESSION);
+        System.out.println(wishList.get(1).getGiftName());
         return "userPage.html";
     }
 }
