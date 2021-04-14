@@ -10,7 +10,10 @@ public class User {
     private int userId;
     private ArrayList<WishList> wishLists;
 
-    public User(){};
+    public User() {
+    }
+
+    ;
 
     public User(String email, String userName, String password, int userId) {
         this.email = email;
@@ -26,16 +29,10 @@ public class User {
         this.userId = userId;
         this.wishLists = wishLists;
     }
-    public void addWishList(WishList wl){
+
+    public void addWishList(WishList wl) {
         wishLists.add(wl);
     }
-
-    public String getUserName(){
-        return userName;
-    }
-
-    }
-
 
     public String getEmail() {
         return email;
@@ -55,19 +52,24 @@ public class User {
 
     public ArrayList<WishList> getWishLists() {
         return wishLists;
-    public void setEmail(String email) {
+    }
+
+    public void setEmail (String email){
         this.email = email;
     }
 
-    public void setUserName(String userName) {
+    public void setUserName (String userName){
         this.userName = userName;
     }
 
-    public void setPassword(String password) {
+    public void setPassword (String password){
         this.password = password;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId ( int userId){
         this.userId = userId;
     }
-}
+
+    }
+
+
