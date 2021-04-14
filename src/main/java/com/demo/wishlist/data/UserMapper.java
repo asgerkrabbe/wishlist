@@ -1,8 +1,8 @@
 package com.demo.wishlist.data;
 
-import com.demo.wishlist.model.User;
+        import com.demo.wishlist.model.User;
 
-import java.sql.*;
+        import java.sql.*;
 
 //Class in charge of mapping user data to DB
 public class UserMapper {
@@ -45,7 +45,7 @@ public class UserMapper {
         try {
             Connection con = DBManager.getConnection();
             String SQL = "SELECT email, username, user_password, id FROM user_data "
-                        + "WHERE email=? AND user_password=?";
+                    + "WHERE email=? AND user_password=?";
             PreparedStatement ps = con.prepareStatement(SQL);
             ps.setString(1, email);
             ps.setString(2, password);
