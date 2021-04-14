@@ -14,10 +14,8 @@ public class UserHandler {
     }
 
     //UsersRepo usersRepository;
-   public static User login(String email, String password) {
-       return new User();
-       //if
-       //UsersRepo.login(email, password);
+   public User login(String email, String password) throws LoginSampleException {
+       return dataAccess.login(email, password);
    }
 
     public User createUser(String userName, String email, String pass1, String pass2) throws LoginSampleException {
