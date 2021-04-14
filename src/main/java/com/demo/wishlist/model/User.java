@@ -24,8 +24,16 @@ public class User {
         this.email = email;
         this.userName = userName;
         this.userId = userId;
-        this.password = password;
         this.wishLists = wishLists;
+    }
+    public void addWishList(WishList wl){
+        wishLists.add(wl);
+    }
+
+    public String getUserName(){
+        return userName;
+    }
+
     }
 
 
@@ -45,6 +53,8 @@ public class User {
         return userId;
     }
 
+    public ArrayList<WishList> getWishLists() {
+        return wishLists;
     public void setEmail(String email) {
         this.email = email;
     }
