@@ -15,6 +15,7 @@ public class User {
         this.email = email;
         this.userName = userName;
         this.userId = userId;
+        this.password = password;
         this.wishLists = new ArrayList<>();
     }
 
@@ -22,6 +23,40 @@ public class User {
         this.email = email;
         this.userName = userName;
         this.userId = userId;
+        this.password = password;
         this.wishLists = wishLists;
+    }
+
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 }
