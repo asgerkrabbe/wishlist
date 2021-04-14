@@ -8,10 +8,11 @@ public class Gift {
     private String url;
 
 
-    public Gift(String giftName, double price, String url) {
+    public Gift(String giftName, double price, String url, String description) {
         this.giftName = giftName;
         this.price = price;
         this.url = url;
+        this.description = description;
     }
 
 

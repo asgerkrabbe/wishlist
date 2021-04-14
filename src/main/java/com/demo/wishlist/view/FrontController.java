@@ -13,12 +13,12 @@ public class FrontController {
 
     //method for testing purposes
     private User getTestUser() {
-        Gift gift1 = new Gift("sokker", 50, "www.thissocks");
-        Gift gift2 = new Gift("handsker", 50, "www.thissocks");
-        WishList wl = new WishList(null, "Fødselsdag", 1, 22);
-        User testUser = new User("email", "Ines", "pass", 1);
-        wl.addGift(gift1);
-        wl.addGift(gift2);
+        Gift gift1 = new Gift("sokker", 50, "www.thissocks", "desc");
+        Gift gift2 = new Gift("handsker", 50, "www.thissocks", "desc");
+        ArrayList<Gift> wl = new ArrayList<Gift>();
+        User testUser = new User("email", "Ines", "pass");
+        wl.add(gift1);
+        wl.add(gift2);
         testUser.addWishList(wl);
         return testUser;
 
@@ -56,9 +56,8 @@ public class FrontController {
     @GetMapping("/userpage")
     public String userPage(WebRequest request) {
         User user = (User) request.getAttribute("user", WebRequest.SCOPE_SESSION);
-        List<WishList> wishLists = WishListHandler.getWishLists(user.getUserId());
-        request.setAttribute("wishlists", getTestUser().getWishLists(), WebRequest.SCOPE_SESSION);
+        List<Gift> wishList = WishListHandler.getList(user.getUserId());
+        request.setAttribute("list", getTestUser().geMyList(), WebRequest.SCOPE_SESSION);
         return "userPage.html";
     }
-
 }

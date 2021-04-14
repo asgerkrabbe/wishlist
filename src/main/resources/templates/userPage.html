@@ -5,17 +5,16 @@
     <title>Wish List</title>
 </head>
 <body>
-<h1 th:text=" 'Hello ' + ${session.user.userName}" ></h1>
+<h1 th:text=" 'Hello ' + ${session.user.userName}"></h1>
 
-<div class="list-container" th:each="wishlist:${session.wishlists}">
-    <h4 th:text="${wishlist.name}">List Name...</h4>
-    <tb>
-        <tr th:each="gift:${wishlist}">
+<div class="list-container">
+    <table>
+        <tr th:each="gift:${session.list}">
             <td th:text="${gift.giftName}">Gave</td>
             <td th:text="${gift.price}">Pris</td>
             <td th:text="${gift.url}">Link</td>
         </tr>
-    </tb>
+    </table>
 </div>
 </body>
 </html>
