@@ -63,9 +63,11 @@ public class FrontController {
     @GetMapping("/userdash")
     public String userPage(WebRequest request) throws LoginSampleException {
         User user = (User) request.getAttribute("user", WebRequest.SCOPE_SESSION);
-        List<Gift> wishList = wishListHandler.getList(user.getUserId());
-        if (wishList.size() != 0)
+        int userId = user.getUserId();
+        List<Gift> wishList = wishListHandler.getList(userId);
+        if (wishList.size() != 0) {
             request.setAttribute("list", wishList, WebRequest.SCOPE_SESSION);
+        }
         return "userPage.html";
     }
 
@@ -102,8 +104,7 @@ public class FrontController {
     public String generateLink(WebRequest request){
         User user = (User) request.getAttribute("user", WebRequest.SCOPE_SESSION);
         int userId = user.getUserId();
-        String link = "/sharedList?userid=" + userId;
-        request.setAttribute("link", link, WebRequest.SCOPE_SESSION);
+        request.setAttribute("link", ("/sharedList?userid=" + userId), WebRequest.SCOPE_SESSION);
         return "userPage.html";
     }
 }

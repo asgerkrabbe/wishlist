@@ -7,26 +7,31 @@
 <body>
 <h1 th:text=" 'Hej ' + ${session.user.userName}"></h1>
 
-<div class="list-container">
-
-    <h2 th:unless="${session.list == null}">Din ønskeliste</h2>
+<div class="list-container" th:unless="${session.list == null}">
+    <h2>Din ønskeliste</h2>
     <table>
+        <tr>
+            <th>Gave</th>
+            <th>Beskrivelse</th>
+            <th>Pris</th>
+            <th>Link</th>
+        </tr>
         <tr th:each="gift:${session.list}">
             <td th:text="${gift.giftName}">Gave</td>
+            <td th:text="${gift.description}">Description</td>
             <td th:text="${gift.price}">Pris</td>
             <td th:text="${gift.url}">Link</td>
-            <td th:text="${gift.description}">Link</td>
         </tr>
     </table>
-</div>
-
-<form name="get-link" action="/get-link" method="POST">
-    <input type="submit" value="Del din ønkeliste">
-</form>
-
-<span th:unless="${session.link == null}">
-<var th:text="${session.link}"></var>
+    <br>
+    <form name="get-link" action="/get-link" method="POST">
+        <input type="submit" value="Del din ønkeliste">
+    </form>
+    <br>
+    <span th:unless="${session.link == null}">
+<a th:href="${session.link}" th:text="${session.link}"></a>
 </span>
+</div>
 
 <section>
     <h3>Opret gave til din ønskeliste</h3>

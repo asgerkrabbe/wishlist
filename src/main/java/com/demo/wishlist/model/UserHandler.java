@@ -29,10 +29,7 @@ public class UserHandler {
     public String getUserName(String userId) throws LoginSampleException {
         return dataFacade.getUserName(userId);
     }
-
    }
-
-
    //
 //
 //        return facade.login(email, password);

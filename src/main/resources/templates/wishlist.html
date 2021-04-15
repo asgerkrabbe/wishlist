@@ -8,11 +8,17 @@
 <body>
 <div class="list-container">
     <table>
+        <tr>
+            <th>Gave</th>
+            <th>Beskrivelse</th>
+            <th>Pris</th>
+            <th>Link</th>
+        </tr>
         <tr th:each="gift:${session.list}">
             <td th:text="${gift.giftName}">Gave</td>
+            <td th:text="${gift.description}">Description</td>
             <td th:text="${gift.price}">Pris</td>
             <td th:text="${gift.url}">Link</td>
-            <td th:text="${gift.description}">Link</td>
         </tr>
     </table>
 </div>
