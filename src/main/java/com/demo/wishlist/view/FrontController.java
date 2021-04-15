@@ -2,8 +2,8 @@ package com.demo.wishlist.view;
 import java.util.ArrayList;
 import com.demo.wishlist.model.*;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
 import com.demo.wishlist.data.LoginSampleException;
 import java.util.List;
@@ -15,6 +15,7 @@ public class FrontController {
     WishListHandler wishListHandler = new WishListHandler();
 
     //method for testing purposes
+    /*
     private User getTestUser() {
         Gift gift1 = new Gift("sokker", 50, "www.thissocks", "desc");
         Gift gift2 = new Gift("handsker", 50, "www.thissocks", "desc");
@@ -25,6 +26,7 @@ public class FrontController {
         testUser.addWishList(wl);
         return testUser;
     }
+*/
 
     @GetMapping("/")
     public String index() {
@@ -62,5 +64,29 @@ public class FrontController {
         List<Gift> wishList = wishListHandler.getList(user.getUserId());
         request.setAttribute("list", wishList, WebRequest.SCOPE_SESSION);
         return "userPage.html";
+    }
+
+    @PostMapping ("/addgift")
+    public String addGift(WebRequest request ) throws LoginSampleException{
+        User user = (User) request.getAttribute("user", WebRequest.SCOPE_SESSION);
+        int userId = user.getUserId();
+        String name = request.getParameter("name");
+        String desc = request.getParameter("description");
+        String price = request.getParameter("price");
+        String url = request.getParameter("url");
+        wishListHandler.addGift(userId, name, desc, price, url);
+        return "redirect:/userdash";
+    }
+
+    @ExceptionHandler(Exception.class)
+    public String anotherError(Model model, Exception exception) {
+        model.addAttribute("message",exception.getMessage());
+        return "exceptionPage.html";
+    }
+
+    @PostMapping(value = "/sharedList")
+    @RequestMapping
+    public String shareList(@RequestParam("user-id") int userId ) {
+
     }
 }

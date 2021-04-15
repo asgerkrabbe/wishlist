@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${session.user.userName}"></title>
+
+<h1 th:text=" 'Denne ønskeliste tilhører ' + ${session.user.userName}"></h1>
+<body>
+<div class="list-container">
+    <table>
+        <tr th:each="gift:${session.list}">
+            <td th:text="${gift.giftName}">Gave</td>
+            <td th:text="${gift.price}">Pris</td>
+            <td th:text="${gift.url}">Link</td>
+            <td th:text="${gift.description}">Link</td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

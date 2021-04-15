@@ -33,4 +33,20 @@ public class WishListMapper {
             throw new LoginSampleException(ex.getMessage());
         }
     }
+
+    public void addGift(Gift gift) throws LoginSampleException {
+        try {
+            Connection con = DBManager.getConnection();
+            String SQL = "INSERT INTO gift (name, price, url, description, user_id) VALUES (?, ?, ?, ?, ?)";
+            PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
+            ps.setString(1, gift.getGiftName());
+            ps.setDouble(2, gift.getPrice());
+            ps.setString(3, gift.getUrl());
+            ps.setString(4, gift.getDescription());
+            ps.setInt(5, gift.getUserId());
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            throw new LoginSampleException(ex.getMessage());
+        }
+    }
 }
