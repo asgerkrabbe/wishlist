@@ -52,12 +52,11 @@ public class FrontController {
         User user = userHandler.createUser(userName, email, pass1, pass2);
         System.out.println("user id: " + user.getUserId() +" "+ user.getUserName());
         request.setAttribute("user", user, WebRequest.SCOPE_SESSION);
-        return "/userpage";
-        //return "redirect:/success";
+        return "redirect:/userdash";
     }
 
 
-    @GetMapping("/userpage")
+    @GetMapping("/userdash")
     public String userPage(WebRequest request) throws LoginSampleException {
         User user = (User) request.getAttribute("user", WebRequest.SCOPE_SESSION);
         List<Gift> wishList = wishListHandler.getList(user.getUserId());

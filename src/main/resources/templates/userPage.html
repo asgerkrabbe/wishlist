@@ -5,7 +5,7 @@
     <title>Wish List</title>
 </head>
 <body>
-<h1 th:text=" 'Hello ' + ${session.user.userName}"></h1>
+<h1 th:text=" 'Hej ' + ${session.user.userName}"></h1>
 
 <div class="list-container">
     <h3 th:if="${session.list != null}">Din ønskeliste</h3>
@@ -15,7 +15,6 @@
             <td th:text="${gift.price}">Pris</td>
             <td th:text="${gift.url}">Link</td>
             <td th:text="${gift.description}">Link</td>
-
         </tr>
     </table>
 </div>
