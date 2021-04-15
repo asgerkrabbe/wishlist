@@ -55,7 +55,6 @@ public class FrontController {
         String pass1 = request.getParameter("password1");
         String pass2 = request.getParameter("password2");
         User user = userHandler.createUser(userName, email, pass1, pass2);
-        System.out.println("user id: " + user.getUserId() + " " + user.getUserName());
         request.setAttribute("user", user, WebRequest.SCOPE_SESSION);
         return "redirect:/userdash";
     }
