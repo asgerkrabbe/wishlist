@@ -2,9 +2,9 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title th:text="${session.user.userName}"></title>
+    <title th:text="${session.name}"></title>
 
-<h1 th:text=" 'Denne ønskeliste tilhører ' + ${session.user.userName}"></h1>
+<h1 th:text=" 'Denne ønskeliste tilhører ' + ${session.name}"></h1>
 <body>
 <div class="list-container">
     <table>

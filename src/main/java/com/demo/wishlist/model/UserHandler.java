@@ -26,6 +26,10 @@ public class UserHandler {
         //then return user
     }
 
+    public String getUserName(String userId) throws LoginSampleException {
+        return dataFacade.getUserName(userId);
+    }
+
    }
 
 

@@ -23,4 +23,8 @@ public class DataFacade {
     public void addGift(Gift gift) throws LoginSampleException {
         listMapper.addGift(gift);
     }
+
+    public String getUserName(String userId) throws LoginSampleException {
+       return userMapper.getUserName(userId);
+    }
 }

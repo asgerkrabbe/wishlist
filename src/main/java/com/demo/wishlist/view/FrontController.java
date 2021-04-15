@@ -88,9 +88,14 @@ public class FrontController {
         return "exceptionPage.html";
     }
 
-    @PostMapping(value = "/sharedList")
-    @RequestMapping
-    public String shareList(@RequestParam("user-id") int userId ) {
+////generate link with ..../sharedList + ?user-id=2
+    @GetMapping("/sharedList")
+    public String shareList(@RequestParam("userid") String userId, WebRequest request) throws LoginSampleException {
+        String name = userHandler.getUserName(userId);
+        List<Gift> wishList = wishListHandler.getList(Integer.parseInt(userId));
+        request.setAttribute("list", wishList, WebRequest.SCOPE_SESSION);
+        request.setAttribute("name", name, WebRequest.SCOPE_SESSION);
+        return "wishlist.html";
 
     }
 }
