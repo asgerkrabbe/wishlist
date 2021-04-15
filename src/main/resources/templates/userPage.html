@@ -8,7 +8,8 @@
 <h1 th:text=" 'Hej ' + ${session.user.userName}"></h1>
 
 <div class="list-container">
-    <h3 th:unless="${session.list == null}">Din ønskeliste</h3>
+
+    <h2 th:unless="${session.list == null}">Din ønskeliste</h2>
     <table>
         <tr th:each="gift:${session.list}">
             <td th:text="${gift.giftName}">Gave</td>

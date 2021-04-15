@@ -24,8 +24,7 @@ public class WishListMapper {
                 int price = rs.getInt("price");
                 String url = rs.getString("url");
                 String description = rs.getString("description");
-                Gift gift = new Gift(name, price, url, description);
-                gift.setUserId(user_id);
+                Gift gift = new Gift(name, price, url, description, user_id);
                 list.add(gift);
             }
             return list;

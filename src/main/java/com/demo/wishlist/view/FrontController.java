@@ -62,7 +62,8 @@ public class FrontController {
     public String userPage(WebRequest request) throws LoginSampleException {
         User user = (User) request.getAttribute("user", WebRequest.SCOPE_SESSION);
         List<Gift> wishList = wishListHandler.getList(user.getUserId());
-        request.setAttribute("list", wishList, WebRequest.SCOPE_SESSION);
+        if (wishList.size() != 0 )
+            request.setAttribute("list", wishList, WebRequest.SCOPE_SESSION);
         return "userPage.html";
     }
 

@@ -19,4 +19,8 @@ public class DataFacade {
     public ArrayList<Gift> getList(int userId) throws LoginSampleException {
         return listMapper.getList(userId);
     }
+
+    public void addGift(Gift gift) throws LoginSampleException {
+        listMapper.addGift(gift);
+    }
 }

@@ -9,11 +9,12 @@ public class Gift {
     private int userId;
 
 
-    public Gift(String giftName, double price, String url, String description) {
+    public Gift(String giftName, double price, String url, String description, int userId) {
         this.giftName = giftName;
         this.price = price;
         this.url = url;
         this.description = description;
+        this.userId = userId;
     }
 
     public void setUserId(int id){
@@ -36,4 +37,6 @@ public class Gift {
     public String getUrl() {
         return url;
     }
+
+    public int getUserId(){ return userId; }
 }
