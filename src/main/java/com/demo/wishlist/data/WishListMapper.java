@@ -3,14 +3,13 @@ package com.demo.wishlist.data;
 
 import com.demo.wishlist.model.Gift;
 
-import javax.swing.plaf.nimbus.State;
 import java.util.ArrayList;
 import java.sql.*;
 
 //class that will map the wish lists in the DB to the model wish lists.
 public class WishListMapper {
 
-    public ArrayList<Gift> getList(int user_id) throws LoginSampleException {
+    public ArrayList<Gift> getList(int user_id) throws WishlistException {
         try {
             Connection con = DBManager.getConnection();
             String SQL = "SELECT name, price, url, description FROM gift WHERE user_id =?";
@@ -29,11 +28,11 @@ public class WishListMapper {
             }
             return list;
         } catch (SQLException ex) {
-            throw new LoginSampleException(ex.getMessage());
+            throw new WishlistException(ex.getMessage());
         }
     }
 
-    public void addGift(Gift gift) throws LoginSampleException {
+    public void addGift(Gift gift) throws WishlistException {
         try {
             Connection con = DBManager.getConnection();
             String SQL = "INSERT INTO gift (name, price, url, description, user_id) VALUES (?, ?, ?, ?, ?)";
@@ -45,7 +44,7 @@ public class WishListMapper {
             ps.setInt(5, gift.getUserId());
             ps.executeUpdate();
         } catch (SQLException ex) {
-            throw new LoginSampleException(ex.getMessage());
+            throw new WishlistException(ex.getMessage());
         }
     }
 }

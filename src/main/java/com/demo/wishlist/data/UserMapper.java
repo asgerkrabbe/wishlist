@@ -7,7 +7,7 @@ import java.sql.*;
 //Class in charge of mapping user data to DB
 public class UserMapper {
 
-    public String getUserName(String userId) throws LoginSampleException {
+    public String getUserName(String userId) throws WishlistException {
         try {
             Connection con = DBManager.getConnection();
             String SQL = "SELECT username FROM user_data WHERE user_id=?";
@@ -20,7 +20,7 @@ public class UserMapper {
             return userName;
 
         } catch (SQLException ex) {
-            throw new LoginSampleException(ex.getMessage());
+            throw new WishlistException(ex.getMessage());
         }
 
     }
@@ -30,10 +30,10 @@ public class UserMapper {
      * The method uses the user parameter in the SQL statement to create a new user.
      *
      * @param user
-     * @throws LoginSampleException
+     * @throws WishlistException
      */
 
-    public User createUser(User user) throws LoginSampleException {
+    public User createUser(User user) throws WishlistException {
         try {
             Connection con = DBManager.getConnection();
             String SQL = "INSERT INTO user_data (user_password, email, username) VALUES (?, ?, ?)";
@@ -48,7 +48,7 @@ public class UserMapper {
             user.setUserId(id);
             return user;
         } catch (SQLException ex) {
-            throw new LoginSampleException(ex.getMessage());
+            throw new WishlistException(ex.getMessage());
         }
     }
 
@@ -60,10 +60,10 @@ public class UserMapper {
      * @param email
      * @param password
      * @return
-     * @throws LoginSampleException Custom made exception method. Without it, the "else" statement
+     * @throws WishlistException Custom made exception method. Without it, the "else" statement
      *                              would not be possible.
      */
-    public User login(String email, String password) throws LoginSampleException {
+    public User login(String email, String password) throws WishlistException {
         try {
             Connection con = DBManager.getConnection();
             String SQL = "SELECT username, user_id FROM user_data "
@@ -79,10 +79,10 @@ public class UserMapper {
                 user.setUserId(id);
                 return user;
             } else {
-                throw new LoginSampleException("Could not validate user");
+                throw new WishlistException("Could not validate user");
             }
         } catch (SQLException ex) {
-            throw new LoginSampleException(ex.getMessage());
+            throw new WishlistException(ex.getMessage());
         }
     }
 }

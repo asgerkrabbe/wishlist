@@ -1,13 +1,11 @@
 package com.demo.wishlist.view;
 
-import java.util.ArrayList;
-
 import com.demo.wishlist.model.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
-import com.demo.wishlist.data.LoginSampleException;
+import com.demo.wishlist.data.WishlistException;
 
 import java.util.List;
 
@@ -17,8 +15,8 @@ public class FrontController {
     UserHandler userHandler = new UserHandler();
     WishListHandler wishListHandler = new WishListHandler();
 
-    //method for testing purposes
     /*
+    //method for testing purposes
     private User getTestUser() {
         Gift gift1 = new Gift("sokker", 50, "www.thissocks", "desc");
         Gift gift2 = new Gift("handsker", 50, "www.thissocks", "desc");
@@ -28,8 +26,7 @@ public class FrontController {
         wl.add(gift2);
         testUser.addWishList(wl);
         return testUser;
-    }
-*/
+    }*/
 
     @GetMapping("/")
     public String index() {
@@ -37,19 +34,17 @@ public class FrontController {
     }
 
     @PostMapping("/login")
-    public String login(WebRequest request) throws LoginSampleException {
+    public String login(WebRequest request) throws WishlistException {
         String email = request.getParameter("email");
         String pwd = request.getParameter("password");
-        // delegate work + data to login controller
         User user = userHandler.login(email, pwd);
         request.setAttribute("user", user, WebRequest.SCOPE_SESSION);
         // Go to to personal page
         return "redirect:/userdash";
-        // return "/userpage";
     }
 
     @PostMapping("/register")
-    public String createUser(WebRequest request) throws LoginSampleException {
+    public String createUser(WebRequest request) throws WishlistException {
         String userName = request.getParameter("username");
         String email = request.getParameter("email");
         String pass1 = request.getParameter("password1");
@@ -61,10 +56,9 @@ public class FrontController {
 
 
     @GetMapping("/userdash")
-    public String userPage(WebRequest request) throws LoginSampleException {
+    public String userPage(WebRequest request) throws WishlistException {
         User user = (User) request.getAttribute("user", WebRequest.SCOPE_SESSION);
-        int userId = user.getUserId();
-        List<Gift> wishList = wishListHandler.getList(userId);
+        List<Gift> wishList = wishListHandler.getList(user.getUserId());
         if (wishList.size() != 0) {
             request.setAttribute("list", wishList, WebRequest.SCOPE_SESSION);
         }
@@ -72,7 +66,7 @@ public class FrontController {
     }
 
     @PostMapping("/addgift")
-    public String addGift(WebRequest request) throws LoginSampleException {
+    public String addGift(WebRequest request) throws WishlistException {
         User user = (User) request.getAttribute("user", WebRequest.SCOPE_SESSION);
         int userId = user.getUserId();
         String name = request.getParameter("name");
@@ -89,9 +83,8 @@ public class FrontController {
         return "exceptionPage.html";
     }
 
-////generate link with ..../sharedList + ?user-id=2
     @GetMapping("/sharedList")
-    public String shareList(@RequestParam("userid") String userId, WebRequest request) throws LoginSampleException {
+    public String shareList(@RequestParam("userid") String userId, WebRequest request) throws WishlistException {
         String name = userHandler.getUserName(userId);
         List<Gift> wishList = wishListHandler.getList(Integer.parseInt(userId));
         request.setAttribute("list", wishList, WebRequest.SCOPE_SESSION);
