@@ -7,6 +7,25 @@ import java.sql.*;
 //Class in charge of mapping user data to DB
 public class UserMapper {
 
+    public String getUserName(String userId) throws LoginSampleException {
+        try {
+            Connection con = DBManager.getConnection();
+            String SQL = "SELECT username FROM user_data WHERE user_id=?";
+            PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
+            ps.setString(1, userId);
+            ResultSet rs = ps.executeQuery();
+            rs.next();
+            String userName = rs.getString("username");
+
+            return userName;
+
+        } catch (SQLException ex) {
+            throw new LoginSampleException(ex.getMessage());
+        }
+
+    }
+
+
     /**
      * The method uses the user parameter in the SQL statement to create a new user.
      *

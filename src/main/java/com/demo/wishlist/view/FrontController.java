@@ -1,11 +1,14 @@
 package com.demo.wishlist.view;
+
 import java.util.ArrayList;
+
 import com.demo.wishlist.model.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
 import com.demo.wishlist.data.LoginSampleException;
+
 import java.util.List;
 
 @Controller
@@ -52,7 +55,7 @@ public class FrontController {
         String pass1 = request.getParameter("password1");
         String pass2 = request.getParameter("password2");
         User user = userHandler.createUser(userName, email, pass1, pass2);
-        System.out.println("user id: " + user.getUserId() +" "+ user.getUserName());
+        System.out.println("user id: " + user.getUserId() + " " + user.getUserName());
         request.setAttribute("user", user, WebRequest.SCOPE_SESSION);
         return "redirect:/userdash";
     }
@@ -62,13 +65,13 @@ public class FrontController {
     public String userPage(WebRequest request) throws LoginSampleException {
         User user = (User) request.getAttribute("user", WebRequest.SCOPE_SESSION);
         List<Gift> wishList = wishListHandler.getList(user.getUserId());
-        if (wishList.size() != 0 )
+        if (wishList.size() != 0)
             request.setAttribute("list", wishList, WebRequest.SCOPE_SESSION);
         return "userPage.html";
     }
 
-    @PostMapping ("/addgift")
-    public String addGift(WebRequest request ) throws LoginSampleException{
+    @PostMapping("/addgift")
+    public String addGift(WebRequest request) throws LoginSampleException {
         User user = (User) request.getAttribute("user", WebRequest.SCOPE_SESSION);
         int userId = user.getUserId();
         String name = request.getParameter("name");
@@ -81,7 +84,7 @@ public class FrontController {
 
     @ExceptionHandler(Exception.class)
     public String anotherError(Model model, Exception exception) {
-        model.addAttribute("message",exception.getMessage());
+        model.addAttribute("message", exception.getMessage());
         return "exceptionPage.html";
     }
 
