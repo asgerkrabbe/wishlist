@@ -4,7 +4,7 @@ import com.demo.wishlist.model.*;
 
 import java.util.ArrayList;
 
-public class DataAccess {
+public class DataFacade {
     UserMapper userMapper = new UserMapper();
     WishListMapper listMapper = new WishListMapper();
 

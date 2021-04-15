@@ -9,6 +9,7 @@ public class UserMapper {
 
     /**
      * The method uses the user parameter in the SQL statement to create a new user.
+     *
      * @param user
      * @throws LoginSampleException
      */
@@ -36,6 +37,7 @@ public class UserMapper {
      * Compares parameter email and password via SQL statement.
      * If a match has been found, the if statement
      * will return af user with email, username, password and ID for session use
+     *
      * @param email
      * @param password
      * @return
@@ -46,7 +48,7 @@ public class UserMapper {
         try {
             Connection con = DBManager.getConnection();
             String SQL = "SELECT username, user_id FROM user_data "
-                        + "WHERE email=? AND user_password=?";
+                    + "WHERE email=? AND user_password=?";
             PreparedStatement ps = con.prepareStatement(SQL);
             ps.setString(1, email);
             ps.setString(2, password);
