@@ -97,4 +97,13 @@ public class FrontController {
         return "wishlist.html";
 
     }
+
+    @PostMapping("/get-link")
+    public String generateLink(WebRequest request){
+        User user = (User) request.getAttribute("user", WebRequest.SCOPE_SESSION);
+        int userId = user.getUserId();
+        String link = "/sharedList?userid=" + userId;
+        request.setAttribute("link", link, WebRequest.SCOPE_SESSION);
+        return "userPage.html";
+    }
 }

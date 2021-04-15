@@ -20,6 +20,13 @@
     </table>
 </div>
 
+<form name="get-link" action="/get-link" method="POST">
+    <input type="submit" value="Del din ønkeliste">
+</form>
+
+<span th:unless="${session.link == null}">
+<var th:text="${session.link}"></var>
+</span>
 
 <section>
     <h3>Opret gave til din ønskeliste</h3>
