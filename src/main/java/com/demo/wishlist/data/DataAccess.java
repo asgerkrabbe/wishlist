@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class DataAccess {
     UserMapper userMapper = new UserMapper();
-    WishListMapper listMapper;
+    WishListMapper listMapper = new WishListMapper();
 
     public User login(String email, String password) throws LoginSampleException {
         return userMapper.login(email, password);

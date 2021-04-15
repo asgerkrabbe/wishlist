@@ -39,7 +39,8 @@ public class FrontController {
         User user = userHandler.login(email, pwd);
         request.setAttribute("user", user, WebRequest.SCOPE_SESSION);
         // Go to to personal page
-        return "/userpage";
+        return "redirect:/userdash";
+        // return "/userpage";
     }
 
     @PostMapping("/register")
@@ -61,7 +62,6 @@ public class FrontController {
         User user = (User) request.getAttribute("user", WebRequest.SCOPE_SESSION);
         List<Gift> wishList = wishListHandler.getList(user.getUserId());
         request.setAttribute("list", wishList, WebRequest.SCOPE_SESSION);
-        System.out.println(wishList.get(1).getGiftName());
         return "userPage.html";
     }
 }
