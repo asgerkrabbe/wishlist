@@ -100,5 +100,10 @@ public class FrontController {
         return "userPage.html";
     }
 
-
+    @PostMapping("/reserveGift")
+    public String reserveGift(WebRequest request) throws WishlistException {
+        String giftId = request.getParameter("gift-id");
+        wishListHandler.reserveGift(giftId);
+        return "wishlist.html";
+    }
 }

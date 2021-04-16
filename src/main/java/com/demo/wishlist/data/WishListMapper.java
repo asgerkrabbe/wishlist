@@ -51,4 +51,16 @@ public class WishListMapper {
             throw new WishlistException(ex.getMessage());
         }
     }
+
+    public void reserveGift(int giftId) throws WishlistException {
+        try {
+        Connection con = DBManager.getConnection();
+        String SQL = "UPDATE gift SET reserved = 1 WHERE (?) = gift_id ";
+        PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
+        ps.setInt(1, giftId);
+        ps.executeUpdate();
+    } catch (SQLException ex) {
+            throw new WishlistException(ex.getMessage());
+        }
+    }
 }

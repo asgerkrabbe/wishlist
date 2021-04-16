@@ -27,4 +27,8 @@ public class DataFacade {
     public String getUserName(String userId) throws WishlistException {
        return userMapper.getUserName(userId);
     }
+
+    public void reserveGift(int giftId) throws WishlistException {
+        listMapper.reserveGift(giftId);
+    }
 }
