@@ -12,18 +12,22 @@ public class WishListMapper {
     public ArrayList<Gift> getList(int user_id) throws WishlistException {
         try {
             Connection con = DBManager.getConnection();
-            String SQL = "SELECT name, price, url, description FROM gift WHERE user_id =?";
+            String SQL = "SELECT name, price, url, description, gift_id, reserved FROM gift WHERE user_id =?";
             PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, user_id);
             ResultSet rs = ps.executeQuery();
-
             ArrayList<Gift> list = new ArrayList<>();
             while (rs.next()) {
                 String name = rs.getString("name");
                 int price = rs.getInt("price");
                 String url = rs.getString("url");
                 String description = rs.getString("description");
+                int giftId = rs.getInt("gift_id");
+                int reserved = rs.getInt("reserved");
                 Gift gift = new Gift(name, price, url, description, user_id);
+                gift.setGiftId(giftId);
+                if (reserved == 1)
+                    gift.setReserved();
                 list.add(gift);
             }
             return list;

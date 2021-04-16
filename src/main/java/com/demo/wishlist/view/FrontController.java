@@ -100,4 +100,6 @@ public class FrontController {
         request.setAttribute("link", ("/sharedList?userid=" + userId), WebRequest.SCOPE_SESSION);
         return "userPage.html";
     }
+
+
 }
