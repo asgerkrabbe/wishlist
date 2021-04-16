@@ -29,7 +29,7 @@
     </form>
     <br>
     <span th:unless="${session.link == null}">
-<a th:href="${session.link}" th:text="${session.link}"></a>
+<a th:href="${session.link}" target="_blank" th:text="${session.link}"></a>
 </span>
 </div>
 

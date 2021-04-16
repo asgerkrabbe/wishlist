@@ -16,13 +16,11 @@ public class UserMapper {
             ResultSet rs = ps.executeQuery();
             rs.next();
             String userName = rs.getString("username");
-
             return userName;
 
         } catch (SQLException ex) {
             throw new WishlistException(ex.getMessage());
         }
-
     }
 
 

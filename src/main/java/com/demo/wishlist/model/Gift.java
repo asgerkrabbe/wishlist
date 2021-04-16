@@ -7,6 +7,8 @@ public class Gift {
     private double price;
     private String url;
     private int userId;
+    private int giftId;
+    public boolean isReserved;
 
 
     public Gift(String giftName, double price, String url, String description, int userId) {
@@ -15,12 +17,22 @@ public class Gift {
         this.url = url;
         this.description = description;
         this.userId = userId;
+        isReserved = false;
+        this.giftId = -1;
     }
 
     public void setUserId(int id){
         this.userId = id;
     }
 
+    public void setReserved(){
+        this.isReserved = true;
+    }
+
+
+    public void setGiftId(int id){
+        giftId = id;
+    }
 
     public String getGiftName() {
         return giftName;
@@ -39,4 +51,7 @@ public class Gift {
     }
 
     public int getUserId(){ return userId; }
+
+    public int getGiftId(){ return giftId; }
+
 }

@@ -6,21 +6,34 @@
 
 <h1 th:text=" 'Denne ønskeliste tilhører ' + ${session.name}"></h1>
 <body>
-<div class="list-container">
     <table>
         <tr>
+            <th>Gave ID</th>
             <th>Gave</th>
             <th>Beskrivelse</th>
             <th>Pris</th>
             <th>Link</th>
+            <th>Er reservered?</th>
         </tr>
         <tr th:each="gift:${session.list}">
+            <td th:text="${gift.giftId}">Link</td>
             <td th:text="${gift.giftName}">Gave</td>
             <td th:text="${gift.description}">Description</td>
             <td th:text="${gift.price}">Pris</td>
             <td th:text="${gift.url}">Link</td>
+            <td th:if="${gift.isReserved == false}">Nej</td>
+            <td th:if="${gift.isReserved == true}">Ja</td>
         </tr>
     </table>
-</div>
+    <br>
+<form name="reserve-form" action="/reserveGift" method="POST">
+    <h2>Indsæt gave id for at reserve gaven</h2>
+    <br>
+    <input type="text" name="gift-id">
+    <br>
+    <br>
+    <input type="submit" value="Reserve">
+</form>
+
 </body>
 </html>
