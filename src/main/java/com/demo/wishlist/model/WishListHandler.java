@@ -20,4 +20,10 @@ public class WishListHandler {
     Gift gift = new Gift(name, doublePrice, url, desc, userId);
     dataFacade.addGift(gift);
 }
+
+    public void reserveGift(String giftId) throws WishlistException {
+        int intgiftId = Integer.parseInt(giftId);
+        dataFacade.reserveGift(intgiftId);
+
+    }
 }
