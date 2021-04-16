@@ -90,7 +90,6 @@ public class FrontController {
         request.setAttribute("list", wishList, WebRequest.SCOPE_SESSION);
         request.setAttribute("name", name, WebRequest.SCOPE_SESSION);
         return "wishlist.html";
-
     }
 
     @PostMapping("/get-link")
