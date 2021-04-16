@@ -63,4 +63,6 @@ public class WishListMapper {
             throw new WishlistException(ex.getMessage());
         }
     }
+
+
 }

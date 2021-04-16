@@ -19,6 +19,7 @@ public class Gift {
         this.userId = userId;
         isReserved = false;
         this.giftId = -1;
+
     }
 
     public void setUserId(int id){
