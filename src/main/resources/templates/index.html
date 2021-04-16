@@ -1,47 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="stylesheet.css">
     <meta charset="UTF-8">
 
     <title>Wish List</title>
 </head>
 <body>
-<h1>
-Velkommen til Wish List !
+<div class="top-nav">
+<h1 class = index-h1>
+    Velkommen til Wish List !
 </h1>
+</div>
 
-
+<div class="sign-in">
     <h4> Log ind for at se din ønskeliste</h4>
+    <form name="login" action="/login" method="POST">
+        Email:<br>
+        <input type="text" name="email">
+        <br>
+        Password:<br>
+        <input type="password" name="password">
+        <br>
+        <br>
+        <input type="submit" value="Log ind">
+    </form>
+</div>
 
-            <form name="login" action="/login" method="POST">
-                Email:<br>
-                <input type="text" name="email">
-                <br>
-                Password:<br>
-                <input type="password" name="password">
-                <br>
-                <br>
-                <input type="submit" value="Log ind">
-            </form>
-
-        <h4>Opret bruger</h4>
-
-            <form name="register" action="/register" method="POST">
-                User name:<br>
-                <input type="text" name="username">
-                <br>
-                Email:<br>
-                <input type="text" name="email">
-                <br>
-                Password:<br>
-                <input type="password" name="password1">
-                <br>
-                Indtast password igen:<br>
-                <input type="password" name="password2">
-                <br>
-                <br>
-                <input type="submit" value="Opret bruger">
-            </form>
-
+<div class="create-user">
+    <h4>Opret bruger</h4>
+    <form name="register" action="/register" method="POST">
+        User name:<br>
+        <input type="text" name="username">
+        <br>
+        Email:<br>
+        <input type="text" name="email">
+        <br>
+        Password:<br>
+        <input type="password" name="password1">
+        <br>
+        Indtast password igen:<br>
+        <input type="password" name="password2">
+        <br>
+        <br>
+        <input type="submit" value="Opret bruger">
+    </form>
+</div>
 </body>
 </html>
