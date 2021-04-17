@@ -16,7 +16,12 @@ public class DBManager {
     private static Connection connection = null;
 
     public static Connection getConnection() {
-
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            System.out.println("Where is your MySQL JDBC Driver?");
+            e.printStackTrace();
+        }
         if (connection != null) return connection;
         try (InputStream input = new FileInputStream("src/main/resources/application.properties")) {
             Properties properties = new Properties();
