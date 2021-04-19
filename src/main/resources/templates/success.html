@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <link rel="stylesheet" href="stylesheet.css">
+  <meta charset="UTF-8">
+  <title th:text="${session.name}"></title>
+
+  <h1 th:text=" 'Denne ønskeliste tilhører ' + ${session.name}"></h1>
+<body>
+<table>
+  <tr>
+    <th>Gave ID</th>
+    <th>Gave</th>
+    <th>Beskrivelse</th>
+    <th>Pris</th>
+    <th>Link</th>
+    <th>Er reservered?</th>
+  </tr>
+  <tr th:each="gift:${session.list}">
+    <td th:text="${gift.giftId}">Link</td>
+    <td th:text="${gift.giftName}">Gave</td>
+    <td th:text="${gift.description}">Description</td>
+    <td th:text="${gift.price}">Pris</td>
+    <td> <a th:href="${gift.url}" target="_blank" th:text="${gift.url}"></a></td>
+    <td th:if="${gift.isReserved == false}">Nej</td>
+    <td th:if="${gift.isReserved == true}">Ja</td>
+  </tr>
+</table>
+<br>
+
+<h2>Tak, gaven er nu reserveret </h2>
+
+</body>
+</html>

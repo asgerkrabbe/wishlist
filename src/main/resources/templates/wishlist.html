@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="da" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <link rel="stylesheet" href="stylesheet.css">
     <meta charset="UTF-8">
@@ -20,7 +20,7 @@
             <td th:text="${gift.giftId}">Link</td>
             <td th:text="${gift.giftName}">Gave</td>
             <td th:text="${gift.description}">Description</td>
-            <td th:text="${gift.price}">Pris</td>
+            <td th:text="${#strings.replace(#numbers.formatCurrency(gift.price), '.00', '')}">Pris</td>
             <td> <a th:href="${gift.url}" target="_blank" th:text="${gift.url}"></a></td>
             <td th:if="${gift.isReserved == false}">Nej</td>
             <td th:if="${gift.isReserved == true}">Ja</td>

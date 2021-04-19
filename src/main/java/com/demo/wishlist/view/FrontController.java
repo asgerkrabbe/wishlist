@@ -107,6 +107,19 @@ public class FrontController {
         String giftId = request.getParameter("gift-id");
         wishListHandler.reserveGift(giftId);
         String userId = (String) request.getAttribute("userid", WebRequest.SCOPE_SESSION);
-        return "redirect:/sharedList?userid=" + userId;
+        return "redirect:/sharedList2?userid=" + userId;
     }
+
+    @GetMapping("/sharedList2")
+    public String shareList2(@RequestParam("userid") String userId, WebRequest request) throws WishlistException {
+        request.setAttribute("userid", userId,WebRequest.SCOPE_SESSION);
+        String name = userHandler.getUserName(userId);
+        List<Gift> wishList = wishListHandler.getList(Integer.parseInt(userId));
+        request.setAttribute("list", wishList, WebRequest.SCOPE_SESSION);
+        request.setAttribute("name", name, WebRequest.SCOPE_SESSION);
+        return "success.html";
+    }
+
+
+
 }
