@@ -33,7 +33,7 @@ public class FrontController {
         return "index.html";
     }
 
-    @PostMapping("/Wishlist/login")
+    @PostMapping("/login")
     //@PostMapping("/login")
     public String login(WebRequest request) throws WishlistException {
         String email = request.getParameter("email");
@@ -41,7 +41,7 @@ public class FrontController {
         User user = userHandler.login(email, pwd);
         request.setAttribute("user", user, WebRequest.SCOPE_SESSION);
         // Go to to personal page
-        return "redirect:/Wishlist/userdash";
+        return "redirect:/userdash";
     }
 
     @PostMapping("/register")
@@ -56,7 +56,7 @@ public class FrontController {
     }
 
 
-    @GetMapping("/Wishlist/userdash")
+    @GetMapping("/userdash")
     public String userPage(WebRequest request) throws WishlistException {
         User user = (User) request.getAttribute("user", WebRequest.SCOPE_SESSION);
         List<Gift> wishList = wishListHandler.getList(user.getUserId());
