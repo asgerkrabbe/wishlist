@@ -34,14 +34,13 @@ public class FrontController {
     }
 
     @PostMapping("/login")
-    //@PostMapping("/login")
     public String login(WebRequest request) throws WishlistException {
         String email = request.getParameter("email");
         String pwd = request.getParameter("password");
         User user = userHandler.login(email, pwd);
         request.setAttribute("user", user, WebRequest.SCOPE_SESSION);
         // Go to to personal page
-        return "redirect:/userdash";
+        return "redirect:userdash";
     }
 
     @PostMapping("/register")
@@ -52,7 +51,7 @@ public class FrontController {
         String pass2 = request.getParameter("password2");
         User user = userHandler.createUser(userName, email, pass1, pass2);
         request.setAttribute("user", user, WebRequest.SCOPE_SESSION);
-        return "redirect:/userdash";
+        return "redirect:userdash";
     }
 
 
@@ -63,7 +62,7 @@ public class FrontController {
         if (wishList.size() != 0) {
             request.setAttribute("list", wishList, WebRequest.SCOPE_SESSION);
         }
-        return "userPage.html";
+        return "/userPage.html";
     }
 
     @PostMapping("/addgift")
