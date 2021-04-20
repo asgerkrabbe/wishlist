@@ -19,20 +19,6 @@ public class User {
         myList = new ArrayList<Gift>();
     }
 
-    public User(String email, String userName, String password, int userId, ArrayList<Gift> wishList) {
-        this.email = email;
-        this.userName = userName;
-        this.userId = userId;
-    }
-
-    public ArrayList<Gift> geMyList(){
-        return myList;
-    }
-
-    public void addWishList(ArrayList<Gift> wl){
-        this.myList = wl;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -45,9 +31,7 @@ public class User {
         return password;
     }
 
-    public int getUserId() {
-        return userId;
-    }
+    public int getUserId() { return userId;    }
 
     public void setUserId ( int userId){
         this.userId = userId;

@@ -1,5 +1,4 @@
 package com.demo.wishlist.model;
-
 import com.demo.wishlist.data.DataFacade;
 import com.demo.wishlist.data.WishlistException;
 
